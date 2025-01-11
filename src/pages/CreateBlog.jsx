@@ -8,12 +8,14 @@ const CreateBlog = () => {
   const { blogs, setBlogs } = useContext(BlogContext);
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
-  const [tags, setTags] = useState([]); 
-  const [newTag, setNewTag] = useState(''); 
+  const [tags, setTags] = useState([]);
+  const [newTag, setNewTag] = useState('');
   const [isPreviewOpen, setIsPreviewOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const editingBlog = location.state?.blog || null;
+
+  const predefinedTags = ['React', 'JavaScript', 'CSS', 'Frontend', 'Web Development'];
 
   useEffect(() => {
     if (editingBlog) {
@@ -24,30 +26,27 @@ const CreateBlog = () => {
   }, [editingBlog]);
 
   const stripHTML = (html) => {
-    
     const doc = new DOMParser().parseFromString(html, 'text/html');
-    return doc.body.textContent || "";
+    return doc.body.textContent || '';
   };
-  
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const blogData = {
       id: editingBlog ? editingBlog.id : blogs.length + 1,
       title,
-      content : stripHTML(content.toString('html')),
+      content: stripHTML(content.toString('html')),
       tags,
       category: 'Uncategorized',
-      publishDate: editingBlog ? editingBlog.publishDate : new Date().toISOString(), 
+      publishDate: editingBlog ? editingBlog.publishDate : new Date().toISOString(),
     };
 
     if (editingBlog) {
-
       const updatedBlogs = blogs.map((blog) =>
         blog.id === editingBlog.id ? blogData : blog
       );
       setBlogs(updatedBlogs);
     } else {
-
       setBlogs([...blogs, blogData]);
     }
     navigate('/');
@@ -65,6 +64,12 @@ const CreateBlog = () => {
     if (newTag.trim() && !tags.includes(newTag.trim())) {
       setTags([...tags, newTag.trim()]);
       setNewTag('');
+    }
+  };
+
+  const addPredefinedTag = (tag) => {
+    if (!tags.includes(tag)) {
+      setTags([...tags, tag]);
     }
   };
 
@@ -127,6 +132,21 @@ const CreateBlog = () => {
               </span>
             ))}
           </div>
+          <div className="mt-3">
+            <strong>Available Tags:</strong>
+            <div>
+              {predefinedTags.map((tag) => (
+                <span
+                  key={tag}
+                  className={`badge ${tags.includes(tag) ? 'bg-secondary' : 'bg-primary'} me-2`}
+                  style={{ cursor: tags.includes(tag) ? 'default' : 'pointer' }}
+                  onClick={() => !tags.includes(tag) && addPredefinedTag(tag)}
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
         <div className="d-flex gap-2">
           <button type="button" className="btn btn-secondary" onClick={handlePreview}>
@@ -138,7 +158,6 @@ const CreateBlog = () => {
         </div>
       </form>
 
-
       {isPreviewOpen && (
         <div
           className="modal d-block"
@@ -147,7 +166,7 @@ const CreateBlog = () => {
         >
           <div
             className="modal-dialog modal-lg"
-            onClick={(e) => e.stopPropagation()} 
+            onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-content">
               <div className="modal-header">
