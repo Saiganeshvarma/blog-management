@@ -75,7 +75,7 @@ const CreateBlog = () => {
   return (
     <div className="container mt-4">
       <h1 className="mb-4">{editingBlog ? 'Edit Blog' : 'Create a New Blog'}</h1>
-      <form onSubmit={handleSubmit}>
+      <form className="shadow m-2 bg-body rounded p-4" onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Title</label>
           <input
@@ -109,7 +109,7 @@ const CreateBlog = () => {
             />
             <button
               type="button"
-              className="btn btn-outline-secondary"
+              className="btn btn-outline-danger"
               onClick={addTag}
             >
               Add Tag
@@ -119,7 +119,7 @@ const CreateBlog = () => {
             {tags.map((tag) => (
               <span
                 key={tag}
-                className="badge bg-secondary me-2"
+                className="badge bg-danger me-2"
                 style={{ cursor: 'pointer' }}
                 onClick={() => removeTag(tag)}
               >
