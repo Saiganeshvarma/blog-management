@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import BlogList from '../components/BlogList';
 import Filters from '../components/Filters';
-import SearchBar from '../components/Searchbar';
+import SearchBar from '../components/SearchBar';
 import { BlogContext } from '../context/BlogContext';
 
 const Home = () => {
