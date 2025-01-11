@@ -10,13 +10,13 @@ const Home = () => {
   const [filters, setFilters] = useState({});
   const availableTags = ['React', 'JavaScript', 'CSS', 'Frontend', 'Web Development']; 
 
-  // Function to handle blog deletion
+
   const deleteBlog = (id) => {
     const updatedBlogs = blogs.filter((blog) => blog.id !== id);
     setBlogs(updatedBlogs);
   };
 
-  // Function to handle blog editing
+
   const editBlog = (id, updatedData) => {
     const updatedBlogs = blogs.map((blog) =>
       blog.id === id ? { ...blog, ...updatedData } : blog

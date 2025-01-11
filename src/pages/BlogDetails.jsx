@@ -7,7 +7,7 @@ const BlogDetails = () => {
   return (
     <div className="container mt-4">
       <h1 className="mb-4">Blog Details (ID: {id})</h1>
-      {/* Add blog content and reader view here */}
+
     </div>
   );
 };

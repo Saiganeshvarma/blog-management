@@ -24,7 +24,7 @@ const CreateBlog = () => {
   }, [editingBlog]);
 
   const stripHTML = (html) => {
-    // Regular expression to remove all HTML tags
+    
     const doc = new DOMParser().parseFromString(html, 'text/html');
     return doc.body.textContent || "";
   };
@@ -41,16 +41,16 @@ const CreateBlog = () => {
     };
 
     if (editingBlog) {
-      // Update existing blog
+
       const updatedBlogs = blogs.map((blog) =>
         blog.id === editingBlog.id ? blogData : blog
       );
       setBlogs(updatedBlogs);
     } else {
-      // Create new blog
+
       setBlogs([...blogs, blogData]);
     }
-    navigate('/'); // Redirect to the home page
+    navigate('/');
   };
 
   const handlePreview = () => {
@@ -138,7 +138,7 @@ const CreateBlog = () => {
         </div>
       </form>
 
-      {/* Preview Modal */}
+
       {isPreviewOpen && (
         <div
           className="modal d-block"
@@ -147,7 +147,7 @@ const CreateBlog = () => {
         >
           <div
             className="modal-dialog modal-lg"
-            onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside the modal
+            onClick={(e) => e.stopPropagation()} 
           >
             <div className="modal-content">
               <div className="modal-header">
