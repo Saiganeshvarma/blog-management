@@ -39,10 +39,10 @@ const BlogList = ({ searchQuery, filters, blogs, deleteBlog }) => {
 
   console.log("Blogsss", blogs)
   return (
-    <div className='d-flex justify-content-between flex-wrap '>
+    <div className='d-flex justify-content-center flex-wrap '>
       {filteredBlogs.length > 0 ? (
         filteredBlogs.map((blog) => (
-          <div className="card text-start w-45 shadow m-2 bg-body rounded">
+          <div className="card text-start w-75 shadow m-2 bg-body rounded">
             <div className="card-header d-flex justify-content-between align-items-center">
                <h6 className='fw-bold'>{`Blog ${blog.id}`}</h6>
                <p > {formatDate(blog.publishDate)}</p>
