@@ -3,24 +3,24 @@ import { useNavigate } from 'react-router-dom';
 
 const BlogList = ({ searchQuery, filters, blogs, deleteBlog }) => {
   const navigate = useNavigate();
-  // const { blogs } = useContext(BlogContext);
+
   const { category, tags = [] } = filters;
 
   const filteredBlogs = blogs.filter((blog) => {
     const query = searchQuery.toLowerCase();
 
-    // Check if the title matches the query
+
     const matchesTitle = blog.title.toLowerCase().includes(query);
 
-    // Check if any of the tags match the query
+
     const matchesTags = blog.tags.some((tag) =>
       tag.toLowerCase().includes(query)
     );
 
-    // Apply category filter
+
     const matchesCategory = category ? blog.category === category : true;
 
-    // Apply selected tags filter
+
     const matchesSelectedTags =
       tags.length > 0 ? tags.every((tag) => blog.tags.includes(tag)) : true;
 
