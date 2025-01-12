@@ -16,6 +16,8 @@ This blog application allows users to create, edit, delete, and read blogs with 
 
 ### Blog Management
 - **Create, Edit, and Delete Blogs**: Users can create new blogs, edit existing ones, and delete blogs they no longer need.
+A "Show More" and "Show Less" option on the blog view page
+
 - **Blog Preview**: Users can preview their blogs before publishing to ensure the content looks as intended.
 - **Rich Text Editor**: The application provides a rich text editor for blog creation, supporting:
   - Bold
@@ -23,6 +25,8 @@ This blog application allows users to create, edit, delete, and read blogs with 
   - Headings
   - Lists
 - **Tagging System**: Blogs can be categorized using tags to make them more organized and searchable.
+Displaying available tags on the "Create Blog" page, allowing users to select tags directly.
+
 - **Local Storage**: A local storage concept is implemented to retain values even after page refresh, ensuring the data persists between sessions.
 
 ### Search and Filters
